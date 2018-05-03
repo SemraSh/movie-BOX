@@ -1,7 +1,7 @@
-const API_URL = 'http://www.omdbapi.com/?apikey=42894f05'
+const API_URL = 'http://www.omdbapi.com/?apikey=af844020'
 
-export const fetchMovies = (input, page) => {
-  return fetch(`${API_URL}&s=${input}&page=${page}`)
+export const fetchMovies = (search, page) => {
+  return fetch(`${API_URL}&${search}&${page}`)
   .then(res => res.json())
 }
 

@@ -1,12 +1,19 @@
 import React from 'react';
 
 const Movie = ({ movie }) => {
-  console.log(movie.Poster)
+  const handleError = (event) => {
+    console.log(event)
+  }
   return (
     <div className='movie'>
       <p>{movie.Title}</p>
       <p>{movie.Year}</p>
-      <img src={movie.Poster} alt='poster' height='50px' width='auto' />
+      <img 
+      onError={this.handleError}
+      src={movie.Poster}
+        alt='poster'
+        width='200px'
+         />
     </div>
   )
 }
