@@ -1,11 +1,11 @@
 import React from 'react';
-import Movie from './Movie';
+import MovieItem from './MovieItem';
 
 const Movies = ({movies}) => {
   const renderMovies = () => {
     if(movies) {
       return movies.map(movie => {
-        return <Movie key={movie.imdbID} movie={movie}/>
+        return <MovieItem key={movie.imdbID} movie={movie}/>
       })
     }
     else return null

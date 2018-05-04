@@ -12,9 +12,8 @@ export const fetchSingleMovie = (movieId) => {
 
 export const fetchPopularMovies = () => {
   const bestMovies = [
-    'tt3896198', 'tt0137523', 'tt1133985', 'tt0211915', 'tt0338013', 'tt0110912', 'tt0109830', 'tt0172495', 'tt2278388', 'tt1707386'
+    'tt1707386', 'tt3896198', 'tt0137523', 'tt1133985', 'tt0211915', 'tt0338013', 'tt0110912', 'tt0109830', 'tt0172495', 'tt2278388'
   ]
-  const best = []
   return bestMovies.map(movie => {
     return fetch(`${API_URL}&i=${movie}`)
       .then(res => res.json())

@@ -9,7 +9,6 @@ class MainPage extends Component {
     input: '',
     movies: [],
     pages: [],
-    message: '',
     bestMovies:[]
   }
 
@@ -27,12 +26,11 @@ class MainPage extends Component {
             this.setState({
               movies: res.Search,
               pages,
-              message: res.totalResults + ' results found'
             })
           } else {
             Promise.all(fetchPopularMovies())
             .then(res => {
-              this.setState({movies: res, message: 'No results found'})
+              this.setState({movies: res})
             })
           }
         })
@@ -56,7 +54,7 @@ class MainPage extends Component {
         if(res.Response === "False") {
           Promise.all(fetchPopularMovies())
           .then(res => {
-            this.setState({movies: res, message: 'No results found'})
+            this.setState({movies: res})
           })
         } else {
           let pages = []
@@ -65,7 +63,6 @@ class MainPage extends Component {
           this.setState({
             movies: res.Search,
             pages,
-            message: res.totalResults?  `${res.totalResults} results found` : `no results`
           })
         }
       })
@@ -85,16 +82,14 @@ class MainPage extends Component {
   }
 
   render() {
-    const { input, movies, pages, message } = this.state
+    const { input, movies, pages} = this.state
     return (
       <div className="App">
-        <div>
-          <h1>Find movies...</h1>
+        <div className='header'>
+          <h1>movie<span id='box'>BOX</span> </h1>
           <form onSubmit={this.findMovies}>
-            <input onChange={this.saveInput} />
-            <button type='submit'>Search</button>
+            <input onChange={this.saveInput} placeholder='search movies...' autoFocus/>
           </form>
-          <h4>{message}</h4>
         </div>
         <div >
           <Movies movies={movies} />
