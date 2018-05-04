@@ -1,19 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Movie = ({ movie }) => {
-  const handleError = (event) => {
-    console.log(event)
-  }
+  console.log(movie)
   return (
-    <div className='movie'>
-      <p>{movie.Title}</p>
-      <p>{movie.Year}</p>
-      <img 
-      onError={this.handleError}
-      src={movie.Poster}
-        alt='poster'
-        width='200px'
-         />
+    <div className='movie' style={{ backgroundImage: `url(${movie.Poster})` }}>
+      <div className='movie-details'>
+        <p>{movie.Type}</p>
+        <p>{movie.Year}</p>
+        <Link to={`/movies/movie/${movie.imdbID}`} className='movie-title'>
+          {movie.Title.toUpperCase()}</Link>
+      </div>
     </div>
   )
 }

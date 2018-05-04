@@ -2,11 +2,17 @@ import React from 'react';
 import Movie from './Movie';
 
 const Movies = ({movies}) => {
+  const renderMovies = () => {
+    if(movies) {
+      return movies.map(movie => {
+        return <Movie key={movie.imdbID} movie={movie}/>
+      })
+    }
+    else return null
+  }
   return (
-    <div>
-      {movies.map(movie => (
-        <Movie key={movie.imdbID} movie={movie}/>
-      ))}
+    <div className='movies'>
+      {renderMovies()}
     </div>
   )
 }

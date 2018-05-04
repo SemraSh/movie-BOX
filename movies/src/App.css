@@ -2,27 +2,29 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.movies {
+  /* margin: 20px 200px; */
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.movie {
+  background-size:  cover;
+  width: 20em;
+  height: 30em;
+}
+
+.movie-details {
+  padding: 1em;
+  height: 100%;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(16, 120, 238, 0.623))
+}
+
+.movie-title {
   color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  text-decoration: none;
+  font-size: 1.7em;
+  font-family: 'Work Sans', sans-serif;
+  text-shadow: rgb(0, 0, 0) 1px 0 10px;
 }
