@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  height: 800px;
   font-family: sans-serif;  
-  background: rgb(39, 37, 37)
+  background: linear-gradient(rgb(50, 128, 151), white) no-repeat
 }
