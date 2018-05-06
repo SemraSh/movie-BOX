@@ -21,20 +21,22 @@ class Movie extends Component {
     return (
       <div className ='movie'>
       <div>
+        {movie.Poster && 
       <img alt='poster' src={movie.Poster==='N/A' ? '/broken-image.jpg': movie.Poster}/>
+        }
       </div>
       <div className='movie-data'>
         <h2>{movie.Title && movie.Title.toUpperCase()}</h2>
-        <p><span className='emph'>Release date:</span> {movie.Released}</p>
-        <p>{movie.Runtime}</p>
-        <p><span className='emph'>Actors: </span>Actors: {movie.Actors}</p>
-        <p><span className='emph'>Director: </span>{movie.Director}</p>
-        <p><span className='emph'>Awards:</span> {movie.Awards}</p>
+        {movie.Released !== 'N/A' && <p><span className='emph'>Release date:</span> {movie.Released}</p>}
+        {movie.Runtime !== 'N/A' &&<p>{movie.Runtime}</p>}
+        {movie.Actors !== 'N/A' && <p><span className='emph'>Actors: </span>Actors: {movie.Actors}</p>}
+        {movie.Director !== 'N/A' &&<p><span className='emph'>Director: </span>{movie.Director}</p>}
+        {movie.Awards !== 'N/A' &&<p><span className='emph'>Awards:</span> {movie.Awards}</p>}
         <br/>
-        <p>{movie.Plot}</p>
+        {movie.Plot !== 'N/A' &&<p>{movie.Plot}</p>}
         <br/>
-        <p><span className='emph'>Production by </span>{movie.Production}</p>
-        <p><span className='emph'>imdb rating:</span> {movie.imdbRating} voted by {movie.imdbVotes} people</p>
+        {movie.Production !== 'N/A' &&<p><span className='emph'>Production by </span>{movie.Production}</p>}
+        {movie.imdbRating !=='N/A' && <p><span className='emph'>imdb rating:</span>{movie.imdbRating} voted by {movie.imdbVotes} people</p>}
       </div>
       </div>
     )

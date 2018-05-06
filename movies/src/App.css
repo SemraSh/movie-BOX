@@ -6,17 +6,17 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  margin: 5em;
+  margin-top: 20px;
 }
 
 .movie-item {
   display: flex;
   background-position: top;
   background-repeat: no-repeat;
-  filter: grayscale(100%);
-  width: 20em;
-  height: 25em;
+  width: 300px;
+  height: 400px;
   box-shadow: 10px 10px 61px 3px rgba(28, 109, 175, 0.616);
+  filter: grayscale(100%);
   transition: filter 1s
 }
 .movie-item:hover {
@@ -30,11 +30,16 @@
   justify-content: flex-end;
   flex-direction: column;
   align-self: flex-end;
-  height: 50%;
+  height: 70%;
   width: 100%;
-  background: linear-gradient(#ffffff00, #000000);
+  background: linear-gradient(#ffffff00, #2154a5);
   color: white;
 }
+
+.movie-details p {
+  margin: 2px;
+}
+
 a {
   text-decoration: none;
 }
@@ -46,10 +51,6 @@ a {
 }
 
 .header {
-  display: flex;
-  margin: 5em 10em;
-  justify-content: start;
-  align-items: stretch;
   font-family: 'Raleway', sans-serif;
   background: rgba(255, 255, 255, 0.226);
   box-shadow: -4px 10px 60px -30px rgba(0,0,0,1);
@@ -58,17 +59,17 @@ a {
 
 
 input {
-  margin-left:  4em;
-  width: 20em;
-  height: 100%;
+  height: 40px;
+  width: 270px;
   background: none;
-  font-size: 1.6em;
+  font-size: 1.3em;
   font-family: 'Raleway', sans-serif;
   border-top: none;
   border-right: none;
   border-bottom: none;
-  border-left: 1px solid black;
-  padding-left: 0.5em;
+  border: 1px solid  #328097;
+  border-radius: 5px;
+  padding: 5px;
   
 }
 input:focus {
@@ -76,38 +77,59 @@ input:focus {
 }
 
 #box {
-  color:  rgb(50, 128, 151)
-}
-
-p {
-  margin: 0
+  color:  #328097
 }
 
 .movie {
-  width: 80em;
-  height: 20em;
-  display: flex;
-  justify-content: center;
-  padding: 5em;
+  animation: fadein 1s;
+  height: 100vh;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .movie-data {
   color: rgb(36, 36, 36);
-  text-align: start;
-  width: 40em;
-  margin: 5em;
-  font-family: 'Raleway', sans-serif;
-  font-size: 1.2em;
+  margin: 0 10%;
 }
+
 .movie-data h2 {
   color: white;
 }
 
 .movie img {
-  box-shadow: 10px 10px 61px 3px rgba(28, 109, 175, 0.616);
+  margin: 5%;
+  box-shadow: 10px 10px 61px 3px rgba(25, 61, 90, 0.616);
+  border-radius: 5px;
 }
 
 .emph {
   margin-right: 0.6em;
   font-weight: bold;
 }
+
+.page-numbers {
+  margin: 20px;
+  font-size: 1em;
+}
+
+.page-number {
+padding: 5px;
+ margin: 10px;
+ text-decoration: none;
+ color:#328097;
+}
+
+.page-number:focus{
+  color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  .header {
+      box-shadow:none;
+  }
+}
+
+

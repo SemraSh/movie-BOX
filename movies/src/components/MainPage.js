@@ -9,7 +9,8 @@ class MainPage extends Component {
     input: '',
     movies: [],
     pages: [],
-    bestMovies:[]
+    bestMovies: [],
+    message: ''
   }
 
   componentDidMount() {
@@ -29,15 +30,15 @@ class MainPage extends Component {
             })
           } else {
             Promise.all(fetchPopularMovies())
-            .then(res => {
-              this.setState({movies: res})
-            })
+              .then(res => {
+                this.setState({ movies: res })
+              })
           }
         })
     } else {
       Promise.all(fetchPopularMovies())
         .then(res => {
-          this.setState({movies: res})
+          this.setState({ movies: res })
         })
     }
 
@@ -51,11 +52,11 @@ class MainPage extends Component {
     const page = path[2]
     fetchMovies(search, page)
       .then(res => {
-        if(res.Response === "False") {
+        if (res.Response === "False") {
           Promise.all(fetchPopularMovies())
-          .then(res => {
-            this.setState({movies: res})
-          })
+            .then(res => {
+              this.setState({ movies: res })
+            })
         } else {
           let pages = []
           let totalPages = Math.floor(+res.totalResults / 10)
@@ -77,31 +78,41 @@ class MainPage extends Component {
     const page = path[2]
     fetchMovies(search, page)
       .then(res => {
-        this.setState({ movies: res.Search })
+        if (res.Response === "False") {
+          this.setState({ message: 'No movies found' })
+        }
+        else {
+          this.setState({ movies: res.Search, message: '' })
+        }
       })
   }
 
   render() {
-    const { input, movies, pages} = this.state
+    const { input, movies, pages, message } = this.state
+    const currentPage = +this.props.location.search.split('=')[2]
+
+    const showCurrentPages = () => {
+      return pages.map(page => {
+        if (currentPage - 4 < page && currentPage + 5 > page) {
+          return <Link className='page-number' key={'page' + page} to={`movies?s=${input}?page=${page}`}>{page}</Link>
+        }
+      })
+    }
+
     return (
       <div className="App">
         <div className='header'>
           <h1>movie<span id='box'>BOX</span> </h1>
           <form onSubmit={this.findMovies}>
-            <input onChange={this.saveInput} placeholder='search movies...' autoFocus/>
+            <input onChange={this.saveInput} placeholder='search movies...' autoFocus />
           </form>
         </div>
+        <p>{message}</p>
         <div >
           <Movies movies={movies} />
         </div>
         <div className='page-numbers'>
-          {pages.map(page => (
-            <Link
-              to={`movies?s=${input}?page=${page}`}
-              className='page-number'
-              key={'page' + page}
-            >{page}</Link>
-          ))}
+          {showCurrentPages()}
         </div>
       </div>
     );
