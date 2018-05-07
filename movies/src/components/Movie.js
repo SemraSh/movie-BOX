@@ -9,7 +9,6 @@ class Movie extends Component {
     const movieId = this.props.location.pathname.split('/')[2]
     fetchSingleMovie(movieId)
     .then(res => {
-      console.log(res)
       this.setState({
         movie: res
       })
