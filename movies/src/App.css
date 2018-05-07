@@ -82,7 +82,7 @@ input:focus {
 
 .movie {
   animation: fadein 1s;
-  height: 100vh;
+  height: 100%;
 }
 
 @keyframes fadein {
