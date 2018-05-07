@@ -32,7 +32,7 @@ To do so use the command line to navigate to your preferred directory on your lo
 ```
 git clone git@github.com:SemraSh/movie-BOX.git
 ```
-Navigate inside the folder and install all dependencies by entering the following command on your terminal window:
+Navigate inside the movie folder and install all dependencies by using the following command on your terminal window:
 ```
 npm i
 ```
